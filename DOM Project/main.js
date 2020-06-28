@@ -41,9 +41,11 @@ function addItem(e){
 
 // Remove item
 function removeItem(e){
+    console.log(e.type);
   if(e.target.classList.contains('delete')){
     if(confirm('Are You Sure?')){
       var li = e.target.parentElement;
+      console.log(li);
       itemList.removeChild(li);
     }
   }
@@ -54,11 +56,11 @@ function filterItems(e){
   // convert text to lowercase
   var text = e.target.value.toLowerCase();
   // Get lis
-  var items = itemList.getElementsByTagName('li');
+  var items = itemList.getElementsByTagName('li'); // it will get the html collection
   // Convert to an array
   Array.from(items).forEach(function(item){
     var itemName = item.firstChild.textContent;
-    if(itemName.toLowerCase().indexOf(text) != -1){
+    if(itemName.toLowerCase().indexOf(text) != -1){ // -1 means not match
       item.style.display = 'block';
     } else {
       item.style.display = 'none';
